@@ -1,0 +1,32 @@
+A project to download files from mp3skull.com
+
+To run the script, run:
+
+	mp3skull.sh <search_query>
+
+For example:
+	mp3skull.sh "Led Zeppelin"
+
+	PS.: Note that since "Led Zeppelin" contains spaces, you must quote it
+
+== Pre requirements ==
+
+- Curl
+- A bash shell (for awk, ls, cat, etc.)
+- Python (I've coded it using 2.7)
+
+== Internal steps ==
+
+1. Download html list of files to 'temp/songs.html'
+
+2. Parse this list (using python) and generate the file 'temp/urls.txt'
+   
+   This file consists of a list of files in the folowing format:
+   	
+	File name >>> url
+
+   Example:
+   	
+	Bicho De Pe - Eu E Voce >>> http://dc167.4shared.com/img/769002351/414c338c/dlink__2Fdownload_2F77JyGX4m_3Ftsid_3D20110905-32517-78424630/preview.mp3
+
+3. Download each file using curl. If the download fails (by downloading a 0kb file) the file is logged into 'log.txt' and removed from disk
