@@ -7,7 +7,7 @@ touch temp/songs.html
 
 #download song list and process it
 curl http://mp3skull.com/mp3/$(echo $1 | tr " " "_").html > temp/songs.html
-python /d/devel/python/workspace/mp3skull_download/src/main.py temp/songs.html temp/urls.txt
+python src/main.py temp/songs.html temp/urls.txt
 
 #Download each file. If the line starts with '#' that line won't be touched (i.e. won't download that file)
 vi temp/urls.txt
@@ -22,7 +22,7 @@ do
 		filename=${line:0:delimiterPos-2}
 		address=${line:delimiterPos+3}
 		echo "Downloading $filename.mp3"
-		curl $address > $filename.mp3
+		curl $address > "$filename.mp3"
 		
 		#Check file size since the download may have failed for some reason
 		tmpIFS=$IFS; IFS='\n';
@@ -36,6 +36,8 @@ do
 		IFS=$tmpIFS
 	fi
 done
+
+echo "Finished all downloads. Thanks for using the downloader ;)"
 
 #Clean up
 rm -rf temp
