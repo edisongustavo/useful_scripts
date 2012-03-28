@@ -1,4 +1,14 @@
-A project to download files from mp3skull.com
+Some useful scripts I've written to make my life easier. Feel free to use them in any way you find useful.
+
+==========================================
+1. Mp3 skull downloader
+==========================================
+
+==> What is it
+
+  A project to download files from mp3skull.com
+
+==> How to use
 
 To run the script, run:
 
@@ -9,13 +19,13 @@ For example:
 
 	PS.: Note that since "Led Zeppelin" contains spaces, you must quote it
 
-== Pre requirements ==
+==> Pre requirements
 
 - Curl
 - A bash shell (for awk, ls, cat, etc.)
 - Python (I've coded it using 2.7)
 
-== Internal steps ==
+==> Internal steps
 
 1. Download html list of files to 'temp/songs.html'
 
@@ -30,3 +40,16 @@ For example:
 	Bicho De Pe - Eu E Voce >>> http://dc167.4shared.com/img/769002351/414c338c/dlink__2Fdownload_2F77JyGX4m_3Ftsid_3D20110905-32517-78424630/preview.mp3
 
 3. Download each file using curl. If the download fails (by downloading a 0kb file) the file is logged into 'log.txt' and removed from disk
+
+==========================================
+2. Fotki downloader
+==========================================
+
+Downloads entire albums from the website fotki.com
+
+==> USAGE
+
+python fotki.py 'Album name'
+
+==> HACKS: my username is hardcoded into the code, you probably want to change this to your username
+
